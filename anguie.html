@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi Paolita ❤️</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100vh;overflow-x:hidden;
+  background:radial-gradient(circle at top,#481039,#18091c,#050207);
+  color:white;font-family:'Trebuchet MS',Arial,sans-serif;
+  text-align:center;padding:25px 15px;
+}
+.contenedor{max-width:600px;margin:auto;position:relative;z-index:1}
+h1{
+  color:#ff8acb;font-size:clamp(38px,10vw,58px);
+  text-shadow:0 0 15px #ff168c,0 0 35px #ff168c;
+  animation:brillo 2s infinite alternate;
+}
+.poema{font-size:clamp(17px,4.5vw,21px);line-height:1.9;margin:25px auto}
+button{
+  border:2px solid #ffb0dc;border-radius:50px;
+  background:linear-gradient(135deg,#ff287f,#a500a8);
+  color:white;padding:17px 26px;font-size:18px;
+  font-weight:bold;cursor:pointer;
+  box-shadow:0 0 20px #ff168c,0 0 40px #a500a8;
+  animation:pulso 1.5s infinite;
+}
+#sorpresa{display:none;margin-top:35px;animation:aparecer 1s}
+.marco{
+  width:min(85vw,350px);margin:auto;padding:8px;
+  border:3px solid #ff54b7;border-radius:25px;
+  box-shadow:0 0 25px #ff168c,0 0 55px #bd00a8;
+}
+.marco img{width:100%;display:block;border-radius:17px}
+.mensaje{font-size:28px;color:#ff91ce;text-shadow:0 0 15px #ff168c}
+.corazon{
+  position:fixed;bottom:-60px;pointer-events:none;
+  z-index:10;animation:subir linear forwards;
+}
+@keyframes subir{
+  0%{transform:translateY(0) rotate(0);opacity:0}
+  15%{opacity:1}
+  100%{transform:translateY(-115vh) rotate(40deg);opacity:0}
+}
+@keyframes pulso{50%{transform:scale(1.06)}}
+@keyframes brillo{to{text-shadow:0 0 25px #ff168c,0 0 45px #a500a8}}
+@keyframes aparecer{
+  from{opacity:0;transform:scale(.8)}
+  to{opacity:1;transform:scale(1)}
+}
+</style>
+</head>
+
+<body>
+<div class="contenedor">
+
+<h1>♡ Mi Paolita ♡</h1>
+
+<div class="poema">
+  <div>Mi Paolita, mi niña hermosa, 🌹❤️</div>
+  <div>tan renegona y tan preciosa,</div>
+  <div>aunque te enojes a cada rato,</div>
+  <div>yo más te quiero y más te extraño. 🥹💗</div>
+  <br>
+  <div>Con tu carácter y tu ternura,</div>
+  <div>te has vuelto mi más linda locura. 😘✨</div>
+</div>
+
+<button onclick="mostrarAmor()">
+💗 Presiona aquí 💗<br>
+<small>para ver a mi Paolita</small>
+</button>
+
+<div id="sorpresa">
+  <div class="marco">
+    <img src="Paola.jpg" alt="Mi Paolita">
+  </div>
+  <h2 class="mensaje">♡ Te quiero, Paolita ♡</h2>
+  <p>Hasta cuando reniegas, me haces sonreír. ❤️</p>
+  <p>💕 Eres mi más linda locura 💕</p>
+</div>
+
+</div>
+
+<script>
+let corazonesActivos=false;
+
+function crearCorazon(){
+  const c=document.createElement('div');
+  c.className='corazon';
+  const emojis=['❤️','💖','💕','💗','💘','💝','✨','🥰'];
+  c.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+  c.style.left=Math.random()*100+'vw';
+  c.style.fontSize=(20+Math.random()*30)+'px';
+  c.style.animationDuration=(3+Math.random()*4)+'s';
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),7500);
+}
+
+function mostrarAmor(){
+  document.getElementById('sorpresa').style.display='block';
+  for(let i=0;i<40;i++)setTimeout(crearCorazon,i*100);
+
+  if(!corazonesActivos){
+    corazonesActivos=true;
+    setInterval(crearCorazon,450);
+  }
+
+  document.getElementById('sorpresa')
+    .scrollIntoView({behavior:'smooth',block:'center'});
+}
+</script>
+
+</body>
+</html>
